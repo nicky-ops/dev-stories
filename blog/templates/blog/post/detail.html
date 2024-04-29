@@ -21,12 +21,6 @@
         <p>No comments yet.</p>
     {% endfor %}
 
-    <!-- Comment form -->
-    <h3>Add a comment</h3>
-    <form method="post">
-        {% csrf_token %}
-        {{ comment_form.as_p }}
-        <button type="submit">Submit</button>
-    </form>
+    
     {% include "blog/post/includes/comment_form.html" %}
 {% endblock %}
