@@ -4,6 +4,10 @@
 
 {% block content %}
     <h1>Log-in</h1>
+    <p>
+        Please use the following form to log in to your account.
+        if you don't have an account yet, you can <a href="{% url "register" %}">register here</a>.
+    </p>
     {% if form.errors %}
         <p>Invalid username or password.</p>
     {% endif %}
