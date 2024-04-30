@@ -37,6 +37,9 @@ LOGOUT_URL = 'logout'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+# Authentication Backends
+AUTHENTICATION_BACKENDS = [ 'django.contrib.auth.backends.ModelBackend', 'account.authentication.EmailAuthBackend', ]
+
 # Application definition
 
 INSTALLED_APPS = [
