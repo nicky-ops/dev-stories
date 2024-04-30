@@ -14,9 +14,7 @@
         <ul class="menu">
         <li {% if section == "dashboard" %}class="selected"{% endif %}>
         <a href="{% url "dashboard" %}">My dashboard</a> </li>
-        <li {% if section == "images" %}class="selected"{% endif %}> <a href="#">Images</a>
-        </li>
-        <li {% if section == "people" %}class="selected"{% endif %}> <a href="#">People</a>
+        <li {% if section == "people" %}class="selected"{% endif %}> <a href="#">Placeholder</a>
         </li> </ul>
         {% endif %}
         <span class="user">
@@ -26,8 +24,18 @@
         <a href="{% url "login" %}">Log-in</a>
                  {% endif %}
                </span>
-        </div>
-        <div id="content">
+    </div>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li class="{{ message.tags }}">
+                    {{ message|safe}}
+                    <a href="#" class="close">x</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <div id="content">
                {% block content %}
                {% endblock %}
     </div>
