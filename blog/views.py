@@ -8,10 +8,16 @@ def post_list(request):
     """
     Return a list of posts that are published
     """
-    posts = Post.published.all()
+    # Get all posts ordered by publish date
+    posts = Post.published.all().order_by('-publish')
+    
     # Get popular posts
     popular_posts = Post.published.get_popular_posts()
-    return render(request, 'blog/post/list.html', {'posts': posts, 'popular_posts': popular_posts})
+    
+    # Get recent posts (let's say the 5 most recent ones)
+    recent_posts = Post.published.all().order_by('-publish')[:5]
+
+    return render(request, 'blog/post/list.html', {'posts': posts, 'popular_posts': popular_posts, 'recent_posts': recent_posts})
 
 def post_detail(request, id):
     """

@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{% static "css/blog.css" %}">
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
 </head>
 <body>
-     <!-- Header -->
-     <header>
+    <!-- Header -->
+    <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
                 <a class="navbar-brand" href="#">My DevStories</a>
@@ -25,21 +25,21 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#">About</a>
                         </li>
-                        <!-- Add more links as needed -->
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
+
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-8"> <!-- Content takes up 8 columns -->
                 <div id="content" class="mt-4">
                     {% block content %}
                     {% endblock %}
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4"> <!-- Sidebar takes up 4 columns -->
                 <div id="sidebar" class="mt-4">
                     <h2>DevStories</h2>
                     <p>Share your story!</p>
@@ -55,15 +55,28 @@
                             </li>
                         {% endfor %}
                     </ul>
+                    <!-- Recent Posts -->
+                    <h2>Recent Posts</h2>
+                    <ul class="recent-posts list-group">
+                        {% for post in recent_posts %}
+                            <li class="list-group-item">
+                                <a href="{% url 'blog:post_detail' post.id %}">
+                                    {{ post.title }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
+
     <footer class="footer mt-auto py-3 bg-dark text-white">
         <div class="container text-center">
             <span>&copy; 2024 My DevStories</span>
         </div>
     </footer>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
