@@ -50,6 +50,10 @@ a:hover {
     padding: 40px 20px;
     text-align: center;
     float:right;
+    margin-right: 20px; 
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
   }
   
 #sidebar h2 {
@@ -67,6 +71,18 @@ p.date {
     font-size: 1rem;
     font-style: italic; 
     font-weight: 800;
+}
+
+.popular-posts li {
+  list-style: none;
+  margin-bottom: 10px;
+}
+.popular-posts a {
+  color: #007bff;
+  text-decoration: none;
+}
+.popular-posts a:hover {
+  text-decoration: underline;
 }
 
 .footer {

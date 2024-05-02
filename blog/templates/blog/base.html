@@ -40,10 +40,21 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div id="sidebar">
+                <div id="sidebar" class="mt-4">
                     <h2>DevStories</h2>
                     <p>Share your story!</p>
                     <img src="{% static 'images/sidebar_image.jpg' %}" alt="Sidebar Image" class="img-fluid mt-3">
+                    
+                    <h2>Popular Posts</h2>
+                    <ul class="popular-posts list-group">
+                        {% for post in popular_posts %}
+                            <li class="list-group-item">
+                                <a href="{% url 'blog:post_detail' post.id %}">
+                                    <span class="badge badge-primary">{{ post.title }}</span>
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
                 </div>
             </div>
         </div>
