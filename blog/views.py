@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post, Comment
-from .forms import CommentForm
+from .forms import CommentForm, CreatePostForm
 from django.views.decorators.http import require_POST
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def post_list(request):
@@ -37,3 +38,19 @@ def post_comment(request, post_id):
         comment.save()
         return redirect('blog:post_detail', id=post_id)
     return render(request, 'blog/post/detail.html', {'post': post, 'form': form, 'comment': comment})
+
+@login_required
+def create_post(request):
+    """
+    Create a new post
+    """
+    if request.method == 'POST':
+        form = CreatePostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.save()
+            return redirect('blog:post_list')
+    else:
+        form = CreatePostForm()
+    return render(request, 'blog/post/create.html', {'form': form})
