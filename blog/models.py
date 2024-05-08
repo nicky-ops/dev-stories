@@ -1,14 +1,20 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from django.db.models import Count
 
-# Create your models here.
 class PublishedManager(models.Manager):
     """
     Custom manager for Posts to retrieve all posts with PUBLISH status
     """
     def get_queryset(self):
         return super().get_queryset().filter(status=Post.Status.PUBLISHED)
+
+    def get_popular_posts(self):
+        """
+        Retrieve popular posts based on the number of comments
+        """
+        return self.get_queryset().annotate(total_comments=Count('comments')).order_by('-total_comments')[:5]
 
 class Post(models.Model):
     """
