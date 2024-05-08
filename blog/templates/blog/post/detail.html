@@ -1,6 +1,6 @@
 {% extends 'blog/base.html' %}
 
-{% block title %}{{ post.title }} {%  endblock %}
+{% block title %}{{ post.title }}{% endblock %}
 
 {% block content %}
     <h1>{{ post.title }}</h1>
@@ -9,18 +9,30 @@
     </p>
     {{ post.body|linebreaks }}
 
-    <!-- Comments section -->
-    <h2>Comments</h2>
-    {% for comment in comments %}
-        <div>
-            <p>{{ comment.text }}</p>
-            <p>By: {{ comment.author.username }}</p>
-            <p>Posted on: {{ comment.created }}</p>
-        </div>
-    {% empty %}
-        <p>No comments yet.</p>
-    {% endfor %}
+    <!-- New Comments section -->
+    <section class="comments">
+        <h2>Comments</h2>
+        {% for comment in comments %}
+            <div class="comment">
+                <div class="comment-meta">
+                    <span class="comment-author">{{ comment.author.username }}</span>
+                    <span class="comment-date">{{ comment.created|timesince }}</span>
+                </div>
+                <div class="comment-content">
+                    <p>{{ comment.text }}</p>
+                </div>
+                <div class="comment-actions">
+                    <a href="#" class="reply-btn">Reply</a>
+                </div>
+                <div class="reply-form">
+                    <!-- Include a reply form if needed -->
+                </div>
+            </div>
+        {% empty %}
+            <p>No comments yet.</p>
+        {% endfor %}
+    </section>
 
-    
+    <!-- Include the comment form -->
     {% include "blog/post/includes/comment_form.html" %}
 {% endblock %}

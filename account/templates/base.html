@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static "css/base.css" %}">
+</head>
+<body>
+    <div id="header" class="bg-dark text-light py-3">
+        <div class="container">
+            <span class="logo">Dev Stories</span>
+            {% if request.user.is_authenticated %}
+            <ul class="menu float-right">
+                <li class="nav-item {% if section == "dashboard" %}active{% endif %}">
+                    <a class="nav-link" href="{% url "dashboard" %}">My dashboard</a>
+                </li>
+                <li class="nav-item {% if section == "people" %}active{% endif %}">
+                    <a class="nav-link" href="#">Placeholder</a>
+                </li>
+            </ul>
+            {% endif %}
+            <span class="user">
+                {% if request.user.is_authenticated %}
+                Hello {{ request.user.first_name|default:request.user.username }}, <a href="{% url "logout" %}" class="text-warning">Logout</a>
+                {% else %}
+                <a href="{% url "login" %}" class="text-warning">Log-in</a>
+                {% endif %}
+            </span>
+        </div>
+    </div>
+    {% if messages %}
+    <div class="container mt-4">
+        <ul class="messages">
+            {% for message in messages %}
+            <li class="alert alert-{{ message.tags }}">
+                {{ message|safe}}
+                <a href="#" class="close">×</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+    <div id="content" class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>

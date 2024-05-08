@@ -1,0 +1,36 @@
+/* base.css */
+
+/* Custom CSS styles */
+body {
+    font-family: Arial, sans-serif;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.user a {
+    color: #ffc107;
+}
+
+.messages {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.messages .alert {
+    margin-bottom: 10px;
+}
+
+.close {
+    float: right;
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.close:hover {
+    color: #000;
+}
