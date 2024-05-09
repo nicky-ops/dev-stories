@@ -24,6 +24,7 @@ def post_detail(request, id):
     return render(request, 'blog/post/detail.html', {'post': post, 'comments': comments, 'form': form})
 
 @require_POST
+@login_required
 def post_comment(request, post_id):
     """
     Handles comment submissions on a blog post
