@@ -33,4 +33,4 @@ Nickson Kipruto Rop <nickyrutto@gmail.com>
 Peter Brian Mwangi <134579827+Peter-Mwangi254@users.noreply.github.com>
 Peter-Mwangi254 <pm6093628@gmail.com>
 
-[![GitHub](https://img.shields.io/badge/GitHub-Profile-blue?style=flat-square&logo=github)](https://github.com/yourusername)
+[![GitHub](https://img.shields.io/badge/GitHub-Profile-blue?style=flat-square&logo=github)](https://github.com/nicky-ops) [![GitHub](https://img.shields.io/badge/GitHub-Profile-blue?style=flat-square&logo=github)](https://github.com/Peter-Mwangi254)
