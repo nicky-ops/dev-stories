@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.db.models import Count
+from django.utils.text import slugify
 
 class PublishedManager(models.Manager):
     """
@@ -37,6 +38,14 @@ class Post(models.Model):
     status = models.CharField(max_length=2, choices=Status.choices, default=Status.DRAFT)
     objects = models.Manager()
     published = PublishedManager()
+
+    def save(self, *args, **kwargs):
+        """
+        Override the save method to auto-generate the slug field
+        """
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
 
     class Meta:
         ordering = ['-publish']
