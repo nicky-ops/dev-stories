@@ -29,4 +29,4 @@ This project is licensed under the MIT License. See the [LICENSE](./LICENSE) fil
 If you have any questions or need assistance, feel free to contact us.
 
 ## Authors
-[![GitHub](https://img.shields.io/badge/GitHub-Profile-blue?style=flat-square&logo=github)](https://github.com/nicky-ops) [![GitHub](https://img.shields.io/badge/GitHub-Profile-blue?style=flat-square&logo=github)](https://github.com/Peter-Mwangi254)
+[![Peter Brian Mwangi](https://img.shields.io/badge/GitHub-Profile-blue?style=flat-square&logo=github)](https://github.com/nicky-ops) [![GitHub](https://img.shields.io/badge/GitHub-Profile-blue?style=flat-square&logo=github)](https://github.com/Peter-Mwangi254)
