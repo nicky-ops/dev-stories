@@ -28,4 +28,9 @@ This project is licensed under the MIT License. See the [LICENSE](./LICENSE) fil
 ## Contact
 If you have any questions or need assistance, feel free to contact us.
 
-## Authors
+## AuthorsNickson K Rop <84801830+nicky-ops@users.noreply.github.com>
+Nickson Kipruto Rop <nickyrutto@gmail.com>
+Peter Brian Mwangi <134579827+Peter-Mwangi254@users.noreply.github.com>
+Peter-Mwangi254 <pm6093628@gmail.com>
+
+[![GitHub](https://img.shields.io/badge/GitHub-Profile-blue?style=flat-square&logo=github)](https://github.com/yourusername)
