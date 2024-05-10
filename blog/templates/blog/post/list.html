@@ -3,7 +3,6 @@
 {% block title %} DevStories {% endblock %}
 
 {% block content %}
-    <h1>DevStories</h1>
     {% for post in posts %}
         <h2>
             <a href="{% url "blog:post_detail" post.id %}">
