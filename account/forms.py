@@ -14,6 +14,7 @@ class UserRegistrationForm(forms.ModelForm):
     """
     Form for users to register their account
     """
+    github_url = forms.URLField(required=False, max_length=2000)
     password = forms.CharField(label='Password', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Repeat Password', widget=forms.PasswordInput)
 

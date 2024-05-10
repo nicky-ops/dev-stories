@@ -13,17 +13,17 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-                <a class="navbar-brand" href="#">My Dev Stories</a>
+                <a class="navbar-brand" href="{% url "blog:post_list" %}">DevStories</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Home</a>
+                            <a class="nav-link" href="#">Placeholder</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
+                            <a class="nav-link" href="#">Placeholder</a>
                         </li>
                     </ul>
                 </div>
@@ -49,7 +49,7 @@
                     <ul class="popular-posts list-group">
                         {% for post in popular_posts %}
                             <li class="list-group-item">
-                                <a href="{% url 'blog:post_detail' post.id %}">
+                                <a href="{% url "blog:post_detail" post.id %}">
                                     <span class="badge badge-primary">{{ post.title }}</span>
                                 </a>
                             </li>
@@ -73,7 +73,7 @@
 
     <footer class="footer mt-auto py-3 bg-dark text-white">
         <div class="container text-center">
-            <span>&copy; 2024 My DevStories</span>
+            <span>&copy; 2024 <a href="{% url "blog:post_list" %}">DevStories</a></span>
         </div>
     </footer>
 
