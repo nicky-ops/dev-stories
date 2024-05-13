@@ -58,3 +58,6 @@ def create_post(request):
     else:
         form = CreatePostForm()
     return render(request, 'blog/post/create.html', {'form': form})
+
+def about_page(request):
+    return render(request, 'blog/about.html')
