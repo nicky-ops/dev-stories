@@ -55,6 +55,11 @@ def create_post(request):
             post.author = request.user
             post.save()
             return redirect('blog:post_list')
+        else:
+            print("Form is not valid:", form.errors)
     else:
         form = CreatePostForm()
     return render(request, 'blog/post/create.html', {'form': form})
+
+def about_page(request):
+    return render(request, 'blog/about.html')
