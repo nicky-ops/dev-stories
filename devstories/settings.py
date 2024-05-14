@@ -31,8 +31,8 @@ ALLOWED_HOSTS = []
 
 
 
-LOGIN_REDIRECT_URL = 'dashboard'
-LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'profile'
+LOGIN_URL = 'account:login'
 LOGOUT_URL = 'logout'
 
 # managing file uploads and serve media files

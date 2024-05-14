@@ -13,14 +13,14 @@
                 <div class="card-body">
                     <p class="lead text-center">
                         Please use the following form to log in to your account.
-                        If you don't have an account yet, you can <a href="{% url "register" %}">register here</a>.
+                        If you don't have an account yet, you can <a href="{% url 'account:register' %}" class="text-warning">Register Here</a>
                     </p>
                     {% if form.errors %}
                         <div class="alert alert-danger" role="alert">
                             Invalid username or password.
                         </div>
                     {% endif %}
-                    <form action="{% url 'login' %}" method="post">
+                    <form action="{% url 'account:login' %}" method="post">
                         {% csrf_token %}
                         <div class="form-group">
                             {{ form.username.label_tag }}
@@ -36,7 +36,7 @@
                         </div>
                     </form>
                     <p class="mt-3 text-center">
-                        <a href="{% url "password_reset" %}">Forgotten your password?</a>
+                        <a href="{% url 'account:password_reset' %}">Forgotten your password?</a>
                     </p>
                 </div>
             </div>
