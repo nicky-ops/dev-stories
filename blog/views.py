@@ -12,7 +12,8 @@ def post_list(request):
     posts = Post.published.all()
     # Get popular posts
     popular_posts = Post.published.get_popular_posts()
-    return render(request, 'blog/post/list.html', {'posts': posts, 'popular_posts': popular_posts})
+    recent_posts = Post.published.all().order_by('-publish')[:5]
+    return render(request, 'blog/post/list.html', {'posts': posts, 'popular_posts': popular_posts, 'recent_posts': recent_posts})
 
 def post_detail(request, id):
     """
@@ -38,6 +39,8 @@ def post_comment(request, post_id):
         comment.author_id = 1  # Replace with actual author id
         comment.save()
         return redirect('blog:post_detail', id=post_id)
+    else:
+        comments = post.comments.filter(active=True)
     return render(request, 'blog/post/detail.html', {'post': post, 'form': form, 'comment': comment})
 
 @login_required
