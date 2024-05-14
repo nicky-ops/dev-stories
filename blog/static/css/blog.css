@@ -1,3 +1,4 @@
+/* General styles */
 body {
   margin: 0;
   padding: 0;
@@ -22,6 +23,7 @@ a:hover {
   color: #0056b3;
 }
 
+/* Navigation bar styles */
 .navbar-brand {
   font-weight: bold;
   font-size: 1.2rem;
@@ -29,32 +31,48 @@ a:hover {
 
 .navbar-nav .nav-link {
   padding: 0.5rem 1rem;
-}
-
-.navbar-dark .navbar-nav .nav-link {
   color: #fff;
 }
 
-.navbar-dark .navbar-nav .nav-link:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+.navbar-dark .nav-link {  /* Applies to both normal and create-post-btn */
+  color: #fff;
 }
 
+.navbar-dark .nav-link:hover {
+  background-color: rgba(61, 17, 221, 0.1);
+}
+
+.create-post-btn, /* Group button styles */
+.reply-btn {
+  background-color: #007bff;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 20px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.create-post-btn:hover,  /* Group button hover styles */
+.reply-btn:hover {
+  background-color: #0056b3;
+}
+
+.nav-link:not(.create-post-btn) {
+  margin-left: 15px;
+}
+
+/* Content and sidebar styles */
 #content {
   border-left: 1px solid #ddd;
-  padding-left: 2rem;
-  padding-bottom: 50px;
-  margin-right: 20px; /* Increase right margin */
+  padding: 2rem;
+  margin-right: 20px;
 }
 
 #sidebar {
   background-color: #f5f5f5;
   padding: 40px 20px;
   text-align: center;
-  float:right;
-  margin-right: 20px; 
+  margin-right: 20px;
   width: 100%;
-  padding-left: 20px;
-  padding-right: 20px;
 }
 
 #sidebar h2 {
@@ -66,6 +84,7 @@ a:hover {
   color: #666;
 }
 
+/* Other styles */
 p.date {
   color: #333;
   font-family: georgia, serif;
@@ -74,31 +93,20 @@ p.date {
   font-weight: 800;
 }
 
-.popular-posts li {
+.popular-posts li,
+.recent-posts li {  /* Combine list styles */
   list-style: none;
   margin-bottom: 10px;
 }
 
-.popular-posts a {
+.popular-posts a,
+.recent-posts a {  /* Combine anchor styles */
   color: #007bff;
   text-decoration: none;
 }
 
-.popular-posts a:hover {
-  text-decoration: underline;
-}
-
-.recent-posts li {
-  list-style: none;
-  margin-bottom: 10px;
-}
-
-.recent-posts a {
-  color: #007bff;
-  text-decoration: none;
-}
-
-.recent-posts a:hover {
+.popular-posts a:hover,
+.recent-posts a:hover {  /* Combine hover styles */
   text-decoration: underline;
 }
 
@@ -109,44 +117,3 @@ p.date {
   margin-top: -50px;
 }
 
-/* New styles for comments */
-.comments {
-  margin-top: 20px;
-}
-
-.comment {
-  margin-bottom: 20px;
-  padding: 15px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  background-color: #f9f9f9;
-}
-
-.comment-meta {
-  font-size: 0.9em;
-  color: #888;
-}
-
-.comment-content {
-  margin-top: 10px;
-  font-size: 1.1em;
-}
-
-.comment-actions {
-  margin-top: 10px;
-}
-
-.reply-btn {
-  color: #007bff;
-  text-decoration: none;
-  margin-right: 10px;
-}
-
-.reply-btn:hover {
-  text-decoration: underline;
-}
-
-.reply-form {
-  margin-top: 10px;
-  padding-left: 20px;
-}
