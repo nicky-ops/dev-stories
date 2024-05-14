@@ -5,12 +5,12 @@ from .forms import LoginForm, UserRegistrationForm, UserEditForm, ProfileEditFor
 from django.contrib.auth.decorators import login_required
 from .models import Profile
 from django.contrib import messages
+from blog import views
 
 # Create your views here.
 @login_required
 def dashboard(request):
-    return render(request, 'account/dashboard.html',
-                  {'section': 'dashboard'})
+    return views.post_list(request)
 
 def register(request):
     """
