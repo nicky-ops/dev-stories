@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 
 
 
-LOGIN_REDIRECT_URL = 'profile'
+LOGIN_REDIRECT_URL = 'blog:post_list'
 LOGIN_URL = 'account:login'
 LOGOUT_URL = 'logout'
 
