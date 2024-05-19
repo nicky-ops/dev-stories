@@ -12,6 +12,11 @@
         <p class="date">
             Published {{ post.publish }} by {{ post.author }}
         </p>
-        {{ post.body|truncatewords:50|linebreaks }}
+        {% if post.body|length > 150 %}
+            {{ post.body|truncatewords:50|linebreaks }}
+            <a href="{% url "blog:post_detail" post.id %}" class="btn btn-primary read-more">Read More</a>
+        {% else %}
+            {{ post.body|linebreaks }}
+        {% endif %}
     {% endfor %}
 {% endblock %}
