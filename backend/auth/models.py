@@ -1,24 +1,12 @@
 from django.db import models
-import uuid
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
-from django.core.exceptions import ObjectDoesNotExist
-from django.http import Http404
-# Create your models here.
+from .abstract.models import AbstractManager, AbstractModel
 
-class UserManager(BaseUserManager):
+
+class UserManager(BaseUserManager, AbstractManager):
     '''
     Custom user manager - to create a user and a superuser
-    '''
-    def get_object_by_public_id(self, public_id):
-        '''
-        Get a user object by public
-        '''
-        try:
-            instance = self.get(public_id=public_id)
-            return instance
-        except (ObjectDoesNotExist, ValueError, TypeError):
-            return Http404
-        
+    ''' 
     def create_user(self, username, email, password=None, **extra_fields):
         '''
         Create and return a user with an email, phone number and password. 
@@ -54,11 +42,10 @@ class UserManager(BaseUserManager):
 
         return user
 
-class User(AbstractBaseUser, PermissionsMixin):
+class User(AbstractModel, AbstractBaseUser, PermissionsMixin):
     '''
     Custom user model
     '''
-    public_id = models.UUIDField(db_index=True, unique=True, default=uuid.uuid4, editable=False)
     username = models.CharField(db_index=True, unique=True, max_length=255)
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
@@ -66,8 +53,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     is_superuser = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
+    bio = models.TextField(blank=True)
+    avatar = models.ImageField(upload_to='avatars/', blank=True, null=True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
