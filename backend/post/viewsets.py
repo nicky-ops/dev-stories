@@ -57,3 +57,34 @@ class PostViewSet(AbstractViewSet):
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+    
+
+    @action(methods=['POST'], detail=True)
+    def like(self, request, *args, **kwargs):
+        '''
+        Like a post
+        '''
+        post = self.get_object()
+        user = self.request.user
+
+        user.like(post)
+
+        serializer = self.serializer_class(post)
+
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    
+
+    @action(methods=['POST'], detail=True)
+    def remove_like(self, request, *args, **kwargs):
+        '''
+        Remove like from a post
+        '''
+        post = self.get_object()
+        user = self.request.user
+
+        user.remove_like(post)
+
+        serializer = self.serializer_class(post)
+
+        return Response(serializer.data, status=status.HTTP_200_OK)
+

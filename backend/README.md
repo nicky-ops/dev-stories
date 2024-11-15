@@ -62,3 +62,6 @@ Auth: Bearer token
     "body": "The simpler post is edited"
 }
 ```
+
+12. `POST api/post/post_pk/like/` - like a post
+13. `api/post/post_pk/remove_like/` - remove a like from a post

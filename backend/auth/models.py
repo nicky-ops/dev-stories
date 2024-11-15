@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from post.models import Post
 from .abstract.models import AbstractManager, AbstractModel
 
 
@@ -55,6 +56,7 @@ class User(AbstractModel, AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     bio = models.TextField(blank=True)
     avatar = models.ImageField(upload_to='avatars/', blank=True, null=True)
+    posts_liked = models.ManyToManyField(Post, related_name='liked_by')
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
@@ -67,3 +69,21 @@ class User(AbstractModel, AbstractBaseUser, PermissionsMixin):
     @property
     def name(self):
         return f"{self.first_name} {self.last_name}"
+    
+    def like(self, post):
+        '''
+        Like a post if it has not been liked before
+        '''
+        return self.posts_liked.add(post)
+    
+    def remove_like(self, post):
+        '''
+        Remove like from a post
+        '''
+        return self.posts_liked.remove(post)
+
+    def has_liked(self, post):
+        '''
+        Check if a post has been liked by the user
+        '''
+        return self.posts_liked.filter(pk=post.pk).exists()
